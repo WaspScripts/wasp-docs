@@ -12,6 +12,7 @@ import shutil
 DOCNAME         = 'WaspLib'
 IGNORE_FOLDERS  = ['.git', '.github', 'examples', 'wasplib-docs', 'plugins', 'tests']
 FILE_EXTENSIONS = ['.md', '.simba']
+RESERVED_NAMES  = ['index']
 
 commentregex = re.compile(r'\(\*.+?\*\)', re.DOTALL)
 
@@ -124,7 +125,7 @@ def generate(root):
     paths = get_files(root)
     NameToID = {}
     TOC = []
-    added = set()
+    added = set(RESERVED_NAMES)
 
     for filename in paths:
       path = os.path.dirname(filename)
